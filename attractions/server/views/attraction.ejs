@@ -1,0 +1,35 @@
+<div style="float: left;margin: 50px;" class="card" style="width: 18rem">
+    <div class="card-body">
+        <h5 class="card-title">
+            <%= doc.value.Name %>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <%= doc.value.ShortDescription %>
+        </h6>
+        <p class="card-text">
+            <%= doc.value.Address %>
+        </p>
+        <p class="card-text"> שעות פתיחה : <%= doc.value.Opening_Hours.replace("</br>","") %></p>
+        <p class="card-text"> מספר מזהה : <%= doc.value.VendorId %>
+        </p>
+        <p class="card-text"> מרחק מהיעד : <%= doc.distance %> ק"מ</p>
+        <a href="<%= doc.value.URL %>" class="card-link">לאתר הרשמי </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <form action="/api" method="POST" style="display: inline-block;">
+            <input type="hidden" name="id" value="<%= doc.value._id %>" />
+            <input type="hidden" name="distance" value="<%= doc.distance %>" />
+            <input type="hidden" name="latitude" value="<%= latitude %>" />
+            <input type="hidden" name="longitude" value="<%= longitude  %>" />
+            <input type="hidden" name="filter" value="האטרקציות שלי" />
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <% if(path ==='האטרקציות שלי' ){ %>
+                <input type="hidden" name="delete" value="true" />
+                <button type="submit" class="btn btn-secondary">מחיקה מהמועדפים</button>
+                
+        </form>
+        <% }else { %>
+            <button type="submit" class="btn btn-secondary">הוספה למועדפים</button></form>
+            <% } %>
+
+
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<%- include('header'); -%>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">קטגוריות</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link <%= path === undefined ? 'active' : '' %>" aria-current="page" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>">כל האטרקציות</a>
+                    <a class="nav-link <%= path === 'חופים' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=חופים">חופים</a>
+                    <a class="nav-link <%= path === 'ארכיאולוגיה והיסטוריה' ? 'active' : '' %>"  href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=ארכיאולוגיה והיסטוריה">ארכיאולוגיה והיסטוריה</a>
+                    <a class="nav-link <%= path === 'פארקים וגנים' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=פארקים וגנים"> פארקים וגנים</a>
+                    <a class="nav-link <%= path === 'ארכיאולוגיה והיסטוריה;אתרים לאומיים' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=ארכיאולוגיה והיסטוריה;אתרים לאומיים"> ארכיאולוגיה והיסטוריה אתרים לאומיים</a>
+                    <a class="nav-link <%= path === 'מוזיאונים ותרבות' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=מוזיאונים ותרבות">מוזיאונים ותרבות </a>
+                    <a class="nav-link <%= path === 'יקבים' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=יקבים">  יקבים</a>
+                    <a class="nav-link <%= path === 'מקומות קדושים' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=מקומות קדושים">  מקומות קדושים</a>
+                    <a class="nav-link <%= path === 'טבע ובעלי חיים' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=טבע ובעלי חיים">  טבע ובעלי חיים</a>
+                    <a class="nav-link <%= path === 'האטרקציות שלי' ? 'active' : '' %>" href="/api?latitude=<%= latitude %>&longitude=<%= longitude %>&filter=האטרקציות שלי">האטרקציות שלי</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <% distance.forEach(function(doc,index){ %>
+        <%- include('attraction', {doc,latitude,longitude,path}); %>
+            <% }); %>
+
+                </body> 

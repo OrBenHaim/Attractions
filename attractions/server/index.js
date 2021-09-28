@@ -125,7 +125,7 @@ app.get("/api", csrfProtection, (req, res) => {
 
 app.post('/api', csrfProtection, (req, res) => {
   if (!req.session.Attraction) {
-    res.redirect('/')
+    return res.redirect('/')
   }
   if (req.body.delete === "true") {
     req.session.Attraction = req.session.Attraction.filter((value) => {
